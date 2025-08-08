@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar contacto</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Editar contacto</h1>
+    <form action="/editar/<%= contacto.id %>" method="POST">
+      <input type="text" name="nombres" value="<%= contacto.nombres %>" required>
+      <input type="text" name="apellidos" value="<%= contacto.apellidos %>" required>
+      <input type="date" name="fecha_nacimiento" value="<%= new Date(contacto.fecha_nacimiento).toISOString().slice(0,10) %>" required>
+      <input type="text" name="direccion" value="<%= contacto.direccion %>">
+      <input type="text" name="celular" value="<%= contacto.celular %>">
+      <input type="email" name="correo" value="<%= contacto.correo %>">
+      <button type="submit" class="btn">Actualizar</button>
+      <a href="/" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</body>
+</html>
