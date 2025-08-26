@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Agenda de Contactos</h1>
+    <a href="/crear" class="btn">+ Nuevo contacto</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Fecha Nac.</th>
+          <th>Dirección</th>
+          <th>Celular</th>
+          <th>Correo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (agenda.length === 0) { %>
+          <tr>
+            <td colspan="7">No hay contactos registrados.</td>
+          </tr>
+        <% } else { %>
+          <% agenda.forEach(c => { %>
+            <tr>
+              <td><%= c.nombres %></td>
+              <td><%= c.apellidos %></td>
+              <td><%= c.fecha_nacimiento.toISOString().slice(0,10) %></td>
+              <td><%= c.direccion %></td>
+              <td><%= c.celular %></td>
+              <td><%= c.correo %></td>
+              <td>
+                <a href="/editar/<%= c.id %>" class="btn-sm">Editar</a>
+                <form action="/eliminar/<%= c.id %>" method="POST" class="form-delete">
+                  <button type="submit" class="btn-sm red">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

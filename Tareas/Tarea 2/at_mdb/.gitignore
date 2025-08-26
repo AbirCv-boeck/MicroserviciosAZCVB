@@ -1,0 +1,47 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Dependencias instaladas con package-lock
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de base de datos locales si usas SQLite
+*.sqlite
+*.sqlite3
+
+# Archivos de tipo map (si usas TypeScript)
+*.js.map
+
+# Carpeta con migraciones compiladas (si las tienes)
+migrations/
+
+# Carpeta con entidades compiladas (si las tienes en JS)
+entidades/*.js
+
+# Cualquier otro archivo que generes que no quieras subir
