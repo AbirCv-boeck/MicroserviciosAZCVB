@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agregar Usuario</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Agregar Usuario</h1>
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <form action="/usuarios" method="POST">
+      <label>Nombre</label>
+      <input type="text" name="nombre" required value="<%= old.nombre || '' %>">
+
+      <label>Correo Electrónico</label>
+      <input type="email" name="correo" required value="<%= old.correo || '' %>">
+
+      <button type="submit" class="btn">Guardar</button>
+      <a href="/" class="btn btn-link">Volver</a>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: users_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: usersdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "33061:3306"  # opcional: exponer MySQL en el host en el puerto 33060 para debugging (no obligatorio)
+
+  app:
+    build: .
+    container_name: users_app
+    restart: on-failure
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_NAME: usersdb
+      DB_PORT: 3306
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+volumes:
+  db_data:
